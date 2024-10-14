@@ -1,0 +1,50 @@
+// PurchaseManager.java
+package supermarket.purchase;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PurchaseManager {
+    private List<String> purchaseHistory = new ArrayList<>();
+
+    public void managePurchases() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Purchase Management");
+            System.out.println("1. View Purchase History");
+            System.out.println("2. Add Purchase");
+            System.out.println("3. Go Back");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    viewPurchaseHistory();
+                    break;
+                case 2:
+                    addPurchase(scanner);
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    private void viewPurchaseHistory() {
+        System.out.println("Purchase History:");
+        for (String purchase : purchaseHistory) {
+            System.out.println(purchase);
+        }
+    }
+
+    private void addPurchase(Scanner scanner) {
+        System.out.print("Enter purchase details: ");
+        String details = scanner.nextLine();
+        purchaseHistory.add(details);
+        System.out.println("Purchase added.");
+    }
+}
